@@ -37,6 +37,7 @@ class Post
 end
 ```
 By this time, your code has gotten pretty ugly just to make use of memoization. Not to mention the tedious typing out of all that extra code.
+
 So you'll find yourself skipping the memoization, or inlining code you would otherwise extract to a method because then it would be "memoized" in the variable. But then you end up with long methods and high complexity.
 
 For all these situations memoization gems (like this one) exist. The last example can be rewritten using fast_memoize like this:
@@ -70,7 +71,9 @@ FastMemoize takes slightly longer than the standard inline method because it mus
 
 ## Caveats
 The `memoize` call only accepts one method name. You must place it after the method is defined. The best place is the line after you define the method.
+
 If the method hasn't been defined yet, it will blow up.
+
 Also, the memoized method can't take arguments. That calls for a different approach to memoization. You should still handle that yourself. This gem is just for the simple cases that you typically meet with `@method_name ||=`. FastMemoize will throw an error if you attempt to memoize a method that takes parameters.
 
 ## Installation
