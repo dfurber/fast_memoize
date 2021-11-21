@@ -10,7 +10,6 @@ module FastMemoize
 
   module ClassMethods
     def memoize(method)
-      raise UndefinedMethodError.new("Can't memoize undefined method: #{method}") unless method_defined?(method)
       raise ParameterizedMethodError.new("Can't memoize a parameterized method") if instance_method(method).arity > 0
 
       alias_method :"memoized_#{method}", method
@@ -21,6 +20,8 @@ module FastMemoize
           @#{method} = memoized_#{method}
         end
       METHOD
+    rescue NameError
+      raise UndefinedMethodError.new("Can't memoize undefined method: #{method}")
     end
   end
 end
