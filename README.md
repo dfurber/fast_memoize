@@ -76,6 +76,8 @@ If the method hasn't been defined yet, it will blow up.
 
 Also, the memoized method can't take arguments. That calls for a different approach to memoization. You should still handle that yourself. This gem is just for the simple cases that you typically meet with `@method_name ||=`. FastMemoize will throw an error if you attempt to memoize a method that takes parameters.
 
+If you use `memoize` exactly wherever you would use the `@||=` method, you should be fine.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -91,10 +93,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install fast_memoize
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
